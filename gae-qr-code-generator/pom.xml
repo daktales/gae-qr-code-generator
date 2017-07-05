@@ -6,7 +6,17 @@
   <artifactId>gae-qr-code-generator</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0</version>
-  <name>gae-qr-code-generator</name>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>Google App Engine QR Code generator Java library</description>
+  <url>https://github.com/daktales/gae-qr-code-generator</url>
+
+  <licenses>
+    <license>
+      <name>MIT license</name>
+      <url>https://raw.githubusercontent.com/daktales/gae-qr-code-generator/master/LICENSE</url>
+    </license>
+  </licenses>
 
   <developers>
     <developer>
@@ -20,7 +30,7 @@
     <repository>
       <id>bintray-daktales-maven-repo</id>
       <name>daktales-maven-repo</name>
-      <url>https://api.bintray.com/maven/daktales/maven-repo/gae-qr-code-generator/;publish=1</url>
+      <url>https://api.bintray.com/maven/daktales/maven-repo/it.daktales.gae.libs.gaeqrcodegenerator:gae-qr-code-generator/</url>
     </repository>
   </distributionManagement>
 
@@ -71,11 +81,6 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>1.4.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
@@ -83,6 +88,16 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>versions-maven-plugin</artifactId>
           <version>2.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.4</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -115,6 +130,32 @@
             <phase>compile</phase>
             <goals>
               <goal>display-dependency-updates</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Attach source -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Attach javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
